@@ -1,7 +1,28 @@
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
-    bool bfs(int src,vector<int> &visited , vector<int> adj[]){
+    
+    //DFS METHOD
+    
+    bool dfs(int node,int parent, vector<int> &visited,vector<int> adj[] ){
+        visited[node]= 1;
+        for(auto nbr : adj[node]){
+            if(!visited[nbr]){
+                bool temp=  dfs(nbr, node, visited, adj);
+                if (temp){
+                   return true; 
+                }
+                
+        }
+        else if(nbr!=parent){
+            return true;
+        }
+    }
+    return false;
+    }
+    
+    // BFS METHOD
+    bool bfs(int src, vector<int> &visited , vector<int> adj[]){
         
         unordered_map<int, int>parent;
         parent[src]=-1;
@@ -33,7 +54,7 @@ class Solution {
         vector<int> visited(V,0);
         for(int i = 0 ; i<V;i++){
             if(!visited[i]){
-                bool ans = bfs(i,visited, adj);
+                bool ans = dfs(i,-1, visited, adj)  ;  // bfs(i,visited, adj);
                 if(ans==true){ 
                     return true;
                        
