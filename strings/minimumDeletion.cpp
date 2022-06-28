@@ -1,4 +1,4 @@
-//###################### Minimum Deletions to Make Character Frequencies Unique ###########
+//###################### Minimum Deletions to Make Character Frequencies Unique    ###########
 //-----------------------------------------------------------------------------------------
 // A string s is called good if there are no two different characters in s that have the same frequency.
 
